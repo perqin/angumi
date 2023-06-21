@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -52,6 +51,8 @@ dependencies {
     implementation(libs.datastore)
     implementation(libs.datastore.core)
     implementation(libs.protobuf.javalite)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.navigation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
