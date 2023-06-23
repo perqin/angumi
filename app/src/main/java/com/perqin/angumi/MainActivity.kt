@@ -9,9 +9,11 @@ import com.perqin.angumi.databinding.ActivityMainBinding
 import com.perqin.angumi.ui.home.HomeFragmentDirections
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val settingsRepo: SettingsRepo by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 //        navView.setupWithNavController(navController)
 
         lifecycleScope.launch {
-            if (!SettingsRepo.flags.first().newToSignIn) {
+            if (!settingsRepo.flags.first().newToSignIn) {
                 navController.navigate(HomeFragmentDirections.globalAuthAction())
             }
         }

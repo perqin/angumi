@@ -1,7 +1,6 @@
 package com.perqin.angumi
 
 import android.app.Application
-import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,7 +15,5 @@ class AngumiApplication : Application() {
             androidContext(this@AngumiApplication)
             modules(appModule)
         }
-
-        SettingsRepo.setup(this)
     }
 }
