@@ -15,6 +15,7 @@ datastore = "1.0.0"
 protobuf-gp = "0.9.3"
 protobuf-javalite = "3.18.0"
 koin = "3.4.1"
+androidx-browser = "1.5.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -33,6 +34,7 @@ datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobuf-javalite" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

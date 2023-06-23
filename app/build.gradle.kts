@@ -20,6 +20,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // TODO: Load from local.properties
+        buildConfigField("String", "BANGUMI_CLIENT_ID", "\"${System.getenv("BANGUMI_CLIENT_ID")}\"")
     }
 
     buildTypes {
@@ -37,6 +40,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -54,6 +58,7 @@ dependencies {
     implementation(libs.protobuf.javalite)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.navigation)
+    implementation(libs.androidx.browser)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
