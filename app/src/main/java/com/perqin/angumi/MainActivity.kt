@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 //        navView.setupWithNavController(navController)
 
         lifecycleScope.launch {
-            if (!settingsRepo.flags.first().newToSignIn) {
+            if (!settingsRepo.flags.first().signInLater) {
                 navController.navigate(HomeFragmentDirections.globalAuthAction())
             }
         }

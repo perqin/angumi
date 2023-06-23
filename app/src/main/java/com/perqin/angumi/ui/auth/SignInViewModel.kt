@@ -1,7 +1,19 @@
 package com.perqin.angumi.ui.auth
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.perqin.angumi.data.settings.SettingsRepo
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
-class SignInViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class SignInViewModel(private val settingsRepo: SettingsRepo) : ViewModel() {
+    fun notNewToSignIn() {
+        viewModelScope.launch {
+            if (!settingsRepo.flags.first().signInLater) {
+                settingsRepo.updateFlags {
+                    it.toBuilder().setSignInLater(true).build()
+                }
+            }
+        }
+    }
 }
