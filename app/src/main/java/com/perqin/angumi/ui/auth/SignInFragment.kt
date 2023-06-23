@@ -10,10 +10,6 @@ import com.perqin.angumi.databinding.FragmentSignInBinding
 import org.koin.android.ext.android.inject
 
 class SignInFragment : Fragment() {
-    companion object {
-        fun newInstance() = SignInFragment()
-    }
-
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SignInViewModel by inject()
