@@ -38,6 +38,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+            storeFile = rootProject.file("debug.keystore")
+            storePassword = "android"
+        }
+    }
     buildFeatures {
         viewBinding = true
         buildConfig = true
