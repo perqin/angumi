@@ -16,6 +16,7 @@ protobuf-gp = "0.9.3"
 protobuf-javalite = "3.18.0"
 koin = "3.4.1"
 androidx-browser = "1.5.0"
+dotenv = "2.0.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -41,6 +42,7 @@ androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf-gp" }
 navigationSafeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
+dotenv = { id = "co.uzzu.dotenv.gradle", version.ref = "dotenv" }
 
 [bundles]
 

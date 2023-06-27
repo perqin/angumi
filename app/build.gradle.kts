@@ -21,8 +21,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // TODO: Load from local.properties
-        buildConfigField("String", "BANGUMI_CLIENT_ID", "\"${System.getenv("BANGUMI_CLIENT_ID")}\"")
+        buildConfigField("String", "BANGUMI_CLIENT_ID", "\"${env.BANGUMI_CLIENT_ID}\"")
     }
 
     buildTypes {
