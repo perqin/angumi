@@ -4,6 +4,7 @@ import com.google.protobuf.gradle.id
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.navigationSafeArgs)
 }
@@ -21,13 +22,16 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BANGUMI_CLIENT_ID", "\"${env.BANGUMI_CLIENT_ID}\"")
+        buildConfigField("String", "BANGUMI_CLIENT_ID", "\"${env.BANGUMI_CLIENT_ID.value}\"")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -66,6 +70,11 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.navigation)
     implementation(libs.androidx.browser)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.android)
+    implementation(libs.ktor.serialization.json)
+    implementation(libs.ktor.content.negotiation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

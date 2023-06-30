@@ -5,6 +5,9 @@
     <string name="title_me">Me</string>
     <string name="title_sign_in">Sign in</string>
     <string name="title_authorize">Authorize</string>
+    <string name="title_authorizing">Authorizing</string>
     <string name="title_not_now">Not now</string>
     <string name="text_sign_in_benefits">Sign in to manage your collections</string>
+    <string name="toast_authorizationSucceeded">Authorization succeeded</string>
+    <string name="toast_authorizationFailed">Authorization failed</string>
 </resources>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AngumiApplication"
         android:allowBackup="true"
@@ -22,6 +24,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.auth.OAuthInitiatorActivity" />
+        <activity
+            android:name=".ui.auth.OAuthCallbackActivity"
+            android:exported="true">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="angumi.perqin.com"
+                    android:pathPattern="/oauth-callback"
+                    android:scheme="https" />
+            </intent-filter>
+            <tools:validation testUrl="https://angumi.perqin.com/oauth-callback?code=testcode" />
         </activity>
     </application>
 
