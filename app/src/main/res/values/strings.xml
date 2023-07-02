@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Angumi</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_collections">Collections</string>
     <string name="title_me">Me</string>
     <string name="title_sign_in">Sign in</string>
     <string name="title_authorize">Authorize</string>

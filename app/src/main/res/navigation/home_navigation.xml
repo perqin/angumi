@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation"
-    app:startDestination="@+id/navigation_dashboard">
+    app:startDestination="@+id/collections">
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.perqin.angumi.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/collections"
+        android:name="com.perqin.angumi.ui.collections.CollectionsFragment"
+        android:label="@string/title_collections"
+        tools:layout="@layout/collections_fragment" />
 
     <fragment
         android:id="@+id/me"
