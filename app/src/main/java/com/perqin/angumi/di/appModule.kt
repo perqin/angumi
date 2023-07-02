@@ -5,6 +5,7 @@ import com.perqin.angumi.data.api.angumi.AuthApi
 import com.perqin.angumi.data.auth.OAuthService
 import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.ui.auth.SignInViewModel
+import com.perqin.angumi.ui.collections.CollectionsViewModel
 import com.perqin.angumi.ui.me.MeViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -40,4 +41,5 @@ val appModule = module {
 
     viewModel { SignInViewModel(get(), get()) }
     viewModel { MeViewModel() }
+    viewModel { CollectionsViewModel(get()) }
 }

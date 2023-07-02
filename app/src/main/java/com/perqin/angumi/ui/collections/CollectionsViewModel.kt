@@ -1,13 +1,20 @@
 package com.perqin.angumi.ui.collections
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.perqin.angumi.data.settings.SettingsRepo
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class CollectionsViewModel : ViewModel() {
+class CollectionsViewModel(private val settingsRepo: SettingsRepo) : ViewModel() {
+    val session = settingsRepo.session
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    @OptIn(DelicateCoroutinesApi::class)
+    fun signOut() {
+        GlobalScope.launch {
+            settingsRepo.updateSession {
+                it.toBuilder().clear().build()
+            }
+        }
     }
-    val text: LiveData<String> = _text
 }

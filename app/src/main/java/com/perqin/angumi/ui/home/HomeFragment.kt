@@ -39,17 +39,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+
         val navView: BottomNavigationView = binding.navView
         val fragment = childFragmentManager.findFragmentById(R.id.home_nav_host_fragment)
         val navController = NavHostFragment.findNavController(fragment!!)
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.collections, R.id.me))
         setupActionBarWithNavController(
             requireActivity() as AppCompatActivity,
             navController,
