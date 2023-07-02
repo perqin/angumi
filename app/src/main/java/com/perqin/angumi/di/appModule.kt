@@ -35,7 +35,7 @@ val appModule = module {
     }
     single { AuthApi(get(named(HttpClientQualifier.ANGUMI))) }
     single { AngumiClient(get()) }
-    single { OAuthService(get()) }
+    single { OAuthService(get(), get()) }
     single { SettingsRepo(get()) }
 
     viewModel { SignInViewModel(get(), get()) }

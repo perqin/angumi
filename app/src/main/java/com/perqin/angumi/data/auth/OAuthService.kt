@@ -3,10 +3,11 @@ package com.perqin.angumi.data.auth
 import android.net.Uri
 import android.util.Log
 import com.perqin.angumi.data.api.angumi.AngumiClient
+import com.perqin.angumi.data.settings.SettingsRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class OAuthService(private val angumiClient: AngumiClient) {
+class OAuthService(private val settingsRepo: SettingsRepo ,private val angumiClient: AngumiClient) {
     companion object {
         private const val TAG = "OAuthService"
     }
@@ -24,6 +25,14 @@ class OAuthService(private val angumiClient: AngumiClient) {
         try {
             val res = angumiClient.auth.getAccessToken(code)
             Log.d(TAG, "handleRedirect: Succeeded, userId is ${res.userId}")
+            settingsRepo.updateSession {
+                it.toBuilder()
+                    .setUserId(res.userId)
+                    .setAccessToken(res.accessToken)
+                    .setRefreshToken(res.refreshToken)
+                    .setExpiresAfter(System.currentTimeMillis() + res.expiresIn)
+                    .build()
+            }
             _state.emit(OAuthState.SUCCESSFUL)
         } catch (e: Exception) {
             Log.e(TAG, "handleRedirect: Failed", e)

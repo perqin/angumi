@@ -7,3 +7,11 @@ option java_multiple_files = true;
 message Flags {
   bool sign_in_later = 1;
 }
+
+message Session {
+  int32 user_id = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+  // Timestamp in millisecond when the token expires
+  int64 expires_after = 4;
+}
