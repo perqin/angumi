@@ -9,5 +9,5 @@ data class PostAccessTokenRes(
     val tokenType: String,
     val scope: String?,
     val refreshToken: String,
-    val userId: Int,
+    val userId: Int?,
 )

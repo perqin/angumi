@@ -13,7 +13,14 @@ class AuthApi(private val client: HttpClient) {
     suspend fun getAccessToken(code: String): PostAccessTokenRes {
         return client.post("${ENDPOINT}/access_token") {
             contentType(ContentType.Application.Json)
-            setBody(PostAccessTokenReq(code))
+            setBody(PostAccessTokenReq("authorization_code", code = code))
+        }.body()
+    }
+
+    suspend fun refreshTokens(refreshToken: String): PostAccessTokenRes {
+        return client.post("$ENDPOINT/access_token") {
+            contentType(ContentType.Application.Json)
+            setBody(PostAccessTokenReq("refresh_token", refreshToken = refreshToken))
         }.body()
     }
 }
