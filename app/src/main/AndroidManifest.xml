@@ -34,11 +34,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data
-                    android:host="angumi.perqin.com"
+                    android:host="angumi.perqin.cn"
                     android:pathPattern="/oauth-callback"
                     android:scheme="https" />
             </intent-filter>
-            <tools:validation testUrl="https://angumi.perqin.com/oauth-callback?code=testcode" />
+            <tools:validation testUrl="https://angumi.perqin.cn/oauth-callback?code=testcode" />
         </activity>
     </application>
 
