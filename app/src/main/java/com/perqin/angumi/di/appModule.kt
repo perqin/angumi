@@ -3,8 +3,12 @@ package com.perqin.angumi.di
 import com.perqin.angumi.data.api.angumi.AngumiClient
 import com.perqin.angumi.data.api.angumi.AuthApi
 import com.perqin.angumi.data.api.bangumi.BangumiClient
+import com.perqin.angumi.data.api.bangumi.CollectionApi
 import com.perqin.angumi.data.api.bangumi.UserApi
 import com.perqin.angumi.data.auth.OAuthService
+import com.perqin.angumi.data.collection.CollectionLocalSource
+import com.perqin.angumi.data.collection.CollectionRemoteSource
+import com.perqin.angumi.data.collection.CollectionRepo
 import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.data.settings.isSignedIn
 import com.perqin.angumi.data.user.UserLocalSource
@@ -89,14 +93,18 @@ val appModule = module {
         }
     }
     single { UserApi(get(named(HttpClientQualifier.BANGUMI))) }
-    single { BangumiClient(get()) }
+    single { CollectionApi(get(named(HttpClientQualifier.BANGUMI))) }
+    single { BangumiClient(get(), get()) }
     single { OAuthService(get(), get(), get()) }
     single { SettingsRepo(get()) }
     single { UserLocalSource() }
     single { UserRemoteSource(get()) }
     single { UserRepo(get(), get()) }
+    single { CollectionLocalSource() }
+    single { CollectionRemoteSource(get()) }
+    single { CollectionRepo(get(), get()) }
 
     viewModel { SignInViewModel(get(), get()) }
     viewModel { MeViewModel(get(), get()) }
-    viewModel { CollectionsViewModel(get()) }
+    viewModel { CollectionsViewModel(get(), get()) }
 }
