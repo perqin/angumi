@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.ktor.serialization.json)
     implementation(libs.ktor.auth)
     implementation(libs.ktor.content.negotiation)
+    implementation(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

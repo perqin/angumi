@@ -11,4 +11,6 @@
     <string name="toast_authorizationSucceeded">Authorization succeeded</string>
     <string name="toast_authorizationFailed">Authorization failed</string>
     <string name="title_sign_out">Sign out</string>
+    <string name="desc_avatar">Avatar</string>
+    <string name="toast_failedToLoadData">Failed to load data</string>
 </resources>

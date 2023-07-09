@@ -6,14 +6,20 @@ import com.perqin.angumi.data.api.bangumi.BangumiClient
 import com.perqin.angumi.data.api.bangumi.UserApi
 import com.perqin.angumi.data.auth.OAuthService
 import com.perqin.angumi.data.settings.SettingsRepo
+import com.perqin.angumi.data.settings.isSignedIn
+import com.perqin.angumi.data.user.UserLocalSource
+import com.perqin.angumi.data.user.UserRemoteSource
+import com.perqin.angumi.data.user.UserRepo
 import com.perqin.angumi.ui.auth.SignInViewModel
 import com.perqin.angumi.ui.collections.CollectionsViewModel
 import com.perqin.angumi.ui.me.MeViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.providers.BearerTokens
 import io.ktor.client.plugins.auth.providers.bearer
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.coroutines.flow.first
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNamingStrategy
@@ -34,6 +40,7 @@ private val angumiClientJson = Json {
 @OptIn(ExperimentalSerializationApi::class)
 private val bangumiClientJson = Json {
     namingStrategy = JsonNamingStrategy.SnakeCase
+    ignoreUnknownKeys = true
 }
 
 val appModule = module {
@@ -48,7 +55,8 @@ val appModule = module {
     single { AuthApi(get(named(HttpClientQualifier.ANGUMI))) }
     single { AngumiClient(get()) }
     single(named(HttpClientQualifier.BANGUMI)) {
-        val oAuthService: OAuthService = get()
+        val settingsRepo: SettingsRepo = get()
+        val angumiClient: AngumiClient = get()
         HttpClient {
             expectSuccess = true
             install(ContentNegotiation) {
@@ -56,11 +64,25 @@ val appModule = module {
             }
             install(Auth) {
                 bearer {
+                    // TODO: Maybe need some separate class to provide loadTokens and refreshTokens.
+                    //  Note that these methods should not be in OAuthService, otherwise will result
+                    //  in cycling dependencies.
                     loadTokens {
-                        oAuthService.loadTokens()
+                        settingsRepo.session.first()
+                            .takeIf { it.isSignedIn() }
+                            ?.let { BearerTokens(it.accessToken, it.refreshToken) }
                     }
                     refreshTokens {
-                        oAuthService.refreshTokens()
+                        val res =
+                            angumiClient.auth.refreshTokens(settingsRepo.session.first().refreshToken)
+                        settingsRepo.updateSession {
+                            it.toBuilder()
+                                .setAccessToken(res.accessToken)
+                                .setRefreshToken(res.refreshToken)
+                                .setExpiresAfter(System.currentTimeMillis() + res.expiresIn)
+                                .build()
+                        }
+                        BearerTokens(res.accessToken, res.refreshToken)
                     }
                 }
             }
@@ -70,8 +92,11 @@ val appModule = module {
     single { BangumiClient(get()) }
     single { OAuthService(get(), get(), get()) }
     single { SettingsRepo(get()) }
+    single { UserLocalSource() }
+    single { UserRemoteSource(get()) }
+    single { UserRepo(get(), get()) }
 
     viewModel { SignInViewModel(get(), get()) }
-    viewModel { MeViewModel() }
+    viewModel { MeViewModel(get(), get()) }
     viewModel { CollectionsViewModel(get()) }
 }

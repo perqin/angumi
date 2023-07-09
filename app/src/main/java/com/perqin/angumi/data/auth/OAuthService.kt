@@ -4,12 +4,9 @@ import android.net.Uri
 import android.util.Log
 import com.perqin.angumi.data.api.angumi.AngumiClient
 import com.perqin.angumi.data.settings.SettingsRepo
-import com.perqin.angumi.data.settings.isSignedIn
 import com.perqin.angumi.data.user.UserRepo
-import io.ktor.client.plugins.auth.providers.BearerTokens
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
 
 class OAuthService(
     private val settingsRepo: SettingsRepo,
@@ -56,23 +53,5 @@ class OAuthService(
 
     suspend fun onFailed() {
         _state.emit(OAuthState.FAILED)
-    }
-
-    suspend fun loadTokens(): BearerTokens? {
-        return settingsRepo.session.first()
-            .takeIf { it.isSignedIn() }
-            ?.let { BearerTokens(it.accessToken, it.refreshToken) }
-    }
-
-    suspend fun refreshTokens(): BearerTokens {
-        val res = angumiClient.auth.refreshTokens(settingsRepo.session.first().refreshToken)
-        settingsRepo.updateSession {
-            it.toBuilder()
-                .setAccessToken(res.accessToken)
-                .setRefreshToken(res.refreshToken)
-                .setExpiresAfter(System.currentTimeMillis() + res.expiresIn)
-                .build()
-        }
-        return BearerTokens(res.accessToken, res.refreshToken)
     }
 }
