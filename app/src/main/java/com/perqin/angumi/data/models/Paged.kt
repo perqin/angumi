@@ -9,3 +9,5 @@ data class Paged<T>(
     val offset: Int,
     val data: List<T>,
 )
+
+fun <T> emptyPage() = Paged<T>(0, 0, 0, emptyList())

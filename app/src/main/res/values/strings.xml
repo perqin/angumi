@@ -13,4 +13,10 @@
     <string name="title_sign_out">Sign out</string>
     <string name="desc_avatar">Avatar</string>
     <string name="toast_failedToLoadData">Failed to load data</string>
+    <string name="title_dropped">Dropped</string>
+    <string name="title_on_hold">On hold</string>
+    <string name="title_collect">Collect</string>
+    <string name="title_wish">Wish</string>
+    <string name="title_do">Do</string>
+    <string name="message_signInToManageCollections">Sign in to manage collections</string>
 </resources>

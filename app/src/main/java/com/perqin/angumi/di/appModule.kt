@@ -106,5 +106,5 @@ val appModule = module {
 
     viewModel { SignInViewModel(get(), get()) }
     viewModel { MeViewModel(get(), get()) }
-    viewModel { CollectionsViewModel(get(), get()) }
+    viewModel { CollectionsViewModel(get(), get(), get()) }
 }
