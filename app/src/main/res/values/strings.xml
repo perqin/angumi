@@ -19,4 +19,9 @@
     <string name="title_wish">Wish</string>
     <string name="title_do">Do</string>
     <string name="message_signInToManageCollections">Sign in to manage collections</string>
+    <string name="title_book">Books</string>
+    <string name="title_anime">Anime</string>
+    <string name="title_music">Music</string>
+    <string name="title_game">Game</string>
+    <string name="title_sanjigen">Sanjigen</string>
 </resources>

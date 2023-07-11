@@ -46,13 +46,67 @@
         android:visibility="gone"
         tools:visibility="visible">
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/search_button"
+            app:tabMode="scrollable">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/book_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_book" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/anime_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_anime" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/music_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_music" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/game_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_game" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/sanjigen_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_sanjigen" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/tab_layout"
+            app:layout_constraintBottom_toBottomOf="@id/tab_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:icon="@drawable/ic_search_black_24dp" />
+
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/collection_type_group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tab_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:singleSelection="true"
