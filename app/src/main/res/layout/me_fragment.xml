@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
-        tools:src="@color/black" />
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         style="@style/TextAppearance.Material3.TitleLarge"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar_view"
-        tools:text="\@perqin\@perqin\@perqin\@perqin" />
+        tools:text="久美子的性格真是恶劣呢！" />
 
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.Material3.Button.TonalButton"
