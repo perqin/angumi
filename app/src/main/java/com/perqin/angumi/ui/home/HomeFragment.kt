@@ -39,8 +39,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-
         val navView: BottomNavigationView = binding.navView
         val fragment = childFragmentManager.findFragmentById(R.id.home_nav_host_fragment)
         val navController = NavHostFragment.findNavController(fragment!!)
