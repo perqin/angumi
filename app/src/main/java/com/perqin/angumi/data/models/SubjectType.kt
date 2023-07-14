@@ -1,5 +1,8 @@
 package com.perqin.angumi.data.models
 
+import androidx.annotation.StringRes
+import com.perqin.angumi.R
+
 /**
  * 条目类型
  *
@@ -10,8 +13,12 @@ package com.perqin.angumi.data.models
  * 6 为 三次元
  * 没有 5
  */
-enum class SubjectType(private val value: Int) {
-    BOOK(1), ANIME(2), MUSIC(3), GAME(4), SANJIGEN(6);
+enum class SubjectType(private val value: Int, @StringRes val titleRes: Int) {
+    BOOK(1, R.string.title_book),
+    ANIME(2, R.string.title_anime),
+    MUSIC(3, R.string.title_music),
+    GAME(4, R.string.title_game),
+    SANJIGEN(6, R.string.title_sanjigen);
 
     override fun toString(): String {
         return value.toString()

@@ -12,6 +12,10 @@ class CollectionsAdapter(private val holderFragment: Fragment) :
     RecyclerView.Adapter<CollectionsAdapter.ViewHolder>() {
     var dataset = listOf<Collection>()
         set(value) {
+            if (field == value) {
+                // To avoid unnecessary update from the view model
+                return
+            }
             field = value
             notifyDataSetChanged()
         }

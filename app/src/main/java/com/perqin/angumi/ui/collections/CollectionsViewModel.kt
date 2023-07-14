@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.perqin.angumi.data.collection.Collection
 import com.perqin.angumi.data.collection.CollectionRepo
 import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.Paged
 import com.perqin.angumi.data.models.SubjectType
-import com.perqin.angumi.data.models.emptyPage
 import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.data.settings.isSignedIn
 import com.perqin.angumi.data.user.UserRepo
@@ -20,23 +18,20 @@ class CollectionsViewModel(
     settingsRepo: SettingsRepo,
 ) : ViewModel() {
     val session = settingsRepo.session
-    private val _collectionType = MutableStateFlow(CollectionType.DO)
-    val collectionType: StateFlow<CollectionType> = _collectionType
-    private val _collections = MutableStateFlow<Paged<Collection>>(emptyPage())
-    val collections: StateFlow<Paged<Collection>> = _collections
 
-    suspend fun loadCollections() {
+    private val _collectionsMap = MutableStateFlow(emptyMap<SubjectType, List<Collection>>())
+    val collectionsMap: StateFlow<Map<SubjectType, List<Collection>>> = _collectionsMap
+
+    // TODO: Load only once on created
+    // TODO: Load by collection type
+    // TODO: Support loading status
+    // TODO: Support pagination
+    suspend fun loadCollections(subjectType: SubjectType) {
         if (!session.first().isSignedIn()) {
             return
         }
         val username = userRepo.loadMe().username
-        val type = _collectionType.value
-        _collections.emit(collectionRepo.loadCollections(username, SubjectType.ANIME, type))
-    }
-
-    suspend fun selectCollectionType(type: CollectionType) {
-        _collectionType.emit(type)
-        _collections.emit(emptyPage())
-        loadCollections()
+        val collections = collectionRepo.loadCollections(username, subjectType, CollectionType.DO)
+        _collectionsMap.emit(_collectionsMap.value + (subjectType to collections.data))
     }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/collection_type_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:closeIcon="@drawable/ic_arrow_drop_down_black_24dp"
+            app:closeIconVisible="true"
+            app:chipBackgroundColor="?attr/colorSecondaryContainer"
+            app:chipStrokeColor="@android:color/transparent"
+            tools:text="@string/title_do" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/collection_item" />
+
+</LinearLayout>
