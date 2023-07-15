@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.perqin.angumi.R
 import com.perqin.angumi.data.models.SubjectType
 import com.perqin.angumi.databinding.CollectionsPageFragmentBinding
 import com.perqin.angumi.utils.collectViewState
@@ -24,13 +26,15 @@ class CollectionsPageFragment : Fragment() {
         }
     }
 
+    private val subjectType get() = SubjectType.values()[requireArguments().getInt(ARG_SUBJECT_TYPE)]
+
     private var _binding: CollectionsPageFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CollectionsPageViewModel by viewModel {
-        val subjectType = SubjectType.values()[requireArguments().getInt(ARG_SUBJECT_TYPE)]
-        parametersOf(subjectType)
-    }
+    private val viewModel: CollectionsPageViewModel by viewModel { parametersOf(subjectType) }
+    private val parentFragmentViewModel: CollectionsViewModel by viewModel(ownerProducer = {
+        requireParentFragment()
+    })
 
     private val adapter = CollectionsAdapter(this)
 
@@ -50,6 +54,21 @@ class CollectionsPageFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
+        collectViewState(parentFragmentViewModel.tabUpdateRequest) {
+            if (it?.subjectType == subjectType) {
+                // Clear request if handled
+                parentFragmentViewModel.clearTabUpdateRequest()
+                try {
+                    viewModel.reloadCollectionList()
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.toast_failedToLoadData,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
         collectViewState(viewModel.collectionType) {
             binding.collectionTypeChip.setText(it.titleRes)
         }

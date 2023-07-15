@@ -107,6 +107,6 @@ val appModule = module {
 
     viewModel { SignInViewModel(get(), get()) }
     viewModel { MeViewModel(get(), get()) }
-    viewModel { CollectionsViewModel(get(), get(), get()) }
-    viewModel { params -> CollectionsPageViewModel(params.get(), get()) }
+    viewModel { CollectionsViewModel(get()) }
+    viewModel { params -> CollectionsPageViewModel(params.get(), get(), get(), get()) }
 }
