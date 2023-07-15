@@ -12,12 +12,12 @@ import com.perqin.angumi.R
 import com.perqin.angumi.data.auth.OAuthState
 import com.perqin.angumi.databinding.FragmentSignInBinding
 import com.perqin.angumi.utils.collectViewState
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : Fragment() {
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SignInViewModel by inject()
+    private val viewModel: SignInViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

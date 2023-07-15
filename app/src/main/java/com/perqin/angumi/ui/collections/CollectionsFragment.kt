@@ -16,13 +16,13 @@ import com.perqin.angumi.data.settings.isSignedIn
 import com.perqin.angumi.databinding.CollectionsFragmentBinding
 import com.perqin.angumi.utils.collectViewState
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CollectionsFragment : Fragment() {
     private var _binding: CollectionsFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CollectionsViewModel by inject()
+    private val viewModel: CollectionsViewModel by viewModel()
     private lateinit var collectionsPagerAdapter: CollectionsPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

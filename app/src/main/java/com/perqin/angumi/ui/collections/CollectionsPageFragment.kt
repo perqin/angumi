@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.perqin.angumi.data.models.SubjectType
 import com.perqin.angumi.databinding.CollectionsPageFragmentBinding
 import com.perqin.angumi.utils.collectViewState
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class CollectionsPageFragment : Fragment() {
@@ -27,7 +27,7 @@ class CollectionsPageFragment : Fragment() {
     private var _binding: CollectionsPageFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CollectionsPageViewModel by inject {
+    private val viewModel: CollectionsPageViewModel by viewModel {
         val subjectType = SubjectType.values()[requireArguments().getInt(ARG_SUBJECT_TYPE)]
         parametersOf(subjectType)
     }

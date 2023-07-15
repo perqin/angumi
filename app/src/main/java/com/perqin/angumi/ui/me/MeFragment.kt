@@ -15,13 +15,13 @@ import com.perqin.angumi.R
 import com.perqin.angumi.databinding.MeFragmentBinding
 import com.perqin.angumi.utils.collectViewState
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MeFragment : Fragment() {
     private var _binding: MeFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MeViewModel by inject()
+    private val viewModel: MeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
