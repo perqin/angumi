@@ -23,7 +23,12 @@ class CollectionsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: CollectionsViewModel by inject()
-    private val collectionsPagerAdapter = CollectionsPagerAdapter(this)
+    private lateinit var collectionsPagerAdapter: CollectionsPagerAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        collectionsPagerAdapter = CollectionsPagerAdapter(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,20 +56,12 @@ class CollectionsFragment : Fragment() {
         })
         loadTabAt(binding.collectionsViewPager.currentItem)
         TabLayoutMediator(binding.tabLayout, binding.collectionsViewPager) { tab, position ->
-            tab.setText(collectionsPagerAdapter.pages[position].type.titleRes)
+            tab.setText(collectionsPagerAdapter.pages[position].titleRes)
         }.attach()
 
         collectViewState(viewModel.session) {
             binding.signedInLayout.visibility = if (it.isSignedIn()) View.VISIBLE else View.GONE
             binding.notSignedInLayout.visibility = if (it.isSignedIn()) View.GONE else View.VISIBLE
-        }
-        collectViewState(viewModel.collectionsMap) {
-            it.forEach { (type, list) ->
-                val page = collectionsPagerAdapter.pages.find { page -> page.type == type }
-                    ?: return@forEach
-                // TODO: What if the dataset is set before the adapter is created?
-                page.adapter?.dataset = list
-            }
         }
     }
 
@@ -76,7 +73,8 @@ class CollectionsFragment : Fragment() {
     private fun loadTabAt(position: Int) {
         lifecycleScope.launch {
             try {
-                viewModel.loadCollections(collectionsPagerAdapter.pages[position].type)
+                // TODO: Should load the whole tab content
+                viewModel.loadCollections(collectionsPagerAdapter.pages[position])
             } catch (e: Exception) {
                 Toast.makeText(
                     requireContext(),

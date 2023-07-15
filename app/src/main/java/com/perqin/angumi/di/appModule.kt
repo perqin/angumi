@@ -15,6 +15,7 @@ import com.perqin.angumi.data.user.UserLocalSource
 import com.perqin.angumi.data.user.UserRemoteSource
 import com.perqin.angumi.data.user.UserRepo
 import com.perqin.angumi.ui.auth.SignInViewModel
+import com.perqin.angumi.ui.collections.CollectionsPageViewModel
 import com.perqin.angumi.ui.collections.CollectionsViewModel
 import com.perqin.angumi.ui.me.MeViewModel
 import io.ktor.client.HttpClient
@@ -107,4 +108,5 @@ val appModule = module {
     viewModel { SignInViewModel(get(), get()) }
     viewModel { MeViewModel(get(), get()) }
     viewModel { CollectionsViewModel(get(), get(), get()) }
+    viewModel { params -> CollectionsPageViewModel(params.get(), get()) }
 }

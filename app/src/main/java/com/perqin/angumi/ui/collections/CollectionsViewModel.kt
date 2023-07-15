@@ -9,7 +9,6 @@ import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.data.settings.isSignedIn
 import com.perqin.angumi.data.user.UserRepo
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 
 class CollectionsViewModel(
@@ -20,7 +19,6 @@ class CollectionsViewModel(
     val session = settingsRepo.session
 
     private val _collectionsMap = MutableStateFlow(emptyMap<SubjectType, List<Collection>>())
-    val collectionsMap: StateFlow<Map<SubjectType, List<Collection>>> = _collectionsMap
 
     // TODO: Load only once on created
     // TODO: Load by collection type
