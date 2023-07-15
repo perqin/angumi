@@ -45,7 +45,7 @@ class CollectionsPageViewModel(
         if (!session.first().isSignedIn()) {
             return
         }
-        val username = userRepo.loadMe().username
+        val username = userRepo.ensureMe().username
         collectionRepo.loadCollections(username, subjectType, _collectionType.value)
     }
 }

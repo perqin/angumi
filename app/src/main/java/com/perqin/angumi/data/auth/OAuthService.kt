@@ -39,7 +39,7 @@ class OAuthService(
                     .build()
             }
             // Also pre-load me
-            userRepo.loadMe()
+            userRepo.ensureMe()
             _state.emit(OAuthState.SUCCESSFUL)
         } catch (e: Exception) {
             Log.e(TAG, "handleRedirect: Failed", e)
