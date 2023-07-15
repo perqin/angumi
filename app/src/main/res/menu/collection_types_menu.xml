@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/wish"
+        android:title="@string/title_wish" />
+
+    <item
+        android:id="@+id/the_do"
+        android:title="@string/title_do" />
+
+    <item
+        android:id="@+id/collect"
+        android:title="@string/title_collect" />
+
+    <item
+        android:id="@+id/on_hold"
+        android:title="@string/title_on_hold" />
+
+    <item
+        android:id="@+id/dropped"
+        android:title="@string/title_dropped" />
+
+</menu>

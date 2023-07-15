@@ -29,6 +29,15 @@ class CollectionsPageViewModel(
         collectionRepo.collectionListOf(subjectType, it)
     }
 
+    suspend fun changeCollectionType(collectionType: CollectionType) {
+        // To avoid triggering collectionList's emission
+        if (_collectionType.value == collectionType) {
+            return
+        }
+        _collectionType.emit(collectionType)
+        reloadCollectionList()
+    }
+
     // TODO: Load only once on created
     // TODO: Support loading status
     // TODO: Support pagination

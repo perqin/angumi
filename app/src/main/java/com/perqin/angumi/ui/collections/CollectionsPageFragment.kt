@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.perqin.angumi.R
+import com.perqin.angumi.data.models.CollectionType
 import com.perqin.angumi.data.models.SubjectType
 import com.perqin.angumi.databinding.CollectionsPageFragmentBinding
+import com.perqin.angumi.utils.ShouldNotReachException
 import com.perqin.angumi.utils.collectViewState
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -51,6 +56,26 @@ class CollectionsPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.collectionTypeChip.setOnClickListener {
+            PopupMenu(requireContext(), it).apply {
+                menuInflater.inflate(R.menu.collection_types_menu, menu)
+                setOnMenuItemClickListener {
+                    lifecycleScope.launch {
+                        viewModel.changeCollectionType(
+                            when (it.itemId) {
+                                R.id.wish -> CollectionType.WISH
+                                R.id.the_do -> CollectionType.DO
+                                R.id.collect -> CollectionType.COLLECT
+                                R.id.on_hold -> CollectionType.ON_HOLD
+                                R.id.dropped -> CollectionType.DROPPED
+                                else -> throw ShouldNotReachException()
+                            }
+                        )
+                    }
+                    true
+                }
+            }.show()
+        }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
