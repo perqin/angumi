@@ -4,6 +4,7 @@ import com.google.protobuf.gradle.id
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.navigationSafeArgs)
@@ -77,9 +78,13 @@ dependencies {
     implementation(libs.ktor.auth)
     implementation(libs.ktor.content.negotiation)
     implementation(libs.glide)
+    implementation(libs.room)
+    implementation(libs.room.ktx)
+    implementation(libs.room.paging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    ksp(libs.room.compiler)
 }
 
 protobuf {
