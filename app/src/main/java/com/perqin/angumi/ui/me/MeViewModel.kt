@@ -12,7 +12,7 @@ class MeViewModel(private val settingsRepo: SettingsRepo, private val userRepo: 
     val user = userRepo.me
 
     suspend fun reload() {
-        userRepo.ensureMe()
+        userRepo.reloadMe()
     }
 
     @OptIn(DelicateCoroutinesApi::class)

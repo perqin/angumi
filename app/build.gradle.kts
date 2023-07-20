@@ -56,6 +56,15 @@ android {
     }
 }
 
+// Workaround, see: https://github.com/google/ksp/issues/1288
+allprojects {
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+}
+
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
@@ -72,6 +81,7 @@ dependencies {
     implementation(libs.koin.androidx.navigation)
     implementation(libs.androidx.browser)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.protobuf)
     implementation(libs.ktor.core)
     implementation(libs.ktor.android)
     implementation(libs.ktor.serialization.json)

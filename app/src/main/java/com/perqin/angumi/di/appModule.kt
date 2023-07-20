@@ -1,5 +1,7 @@
 package com.perqin.angumi.di
 
+import android.content.Context
+import androidx.room.Room
 import com.perqin.angumi.data.api.angumi.AngumiClient
 import com.perqin.angumi.data.api.angumi.AuthApi
 import com.perqin.angumi.data.api.bangumi.BangumiClient
@@ -9,6 +11,7 @@ import com.perqin.angumi.data.auth.OAuthService
 import com.perqin.angumi.data.collection.CollectionLocalSource
 import com.perqin.angumi.data.collection.CollectionRemoteSource
 import com.perqin.angumi.data.collection.CollectionRepo
+import com.perqin.angumi.data.room.CacheDatabase
 import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.data.settings.isSignedIn
 import com.perqin.angumi.data.user.UserLocalSource
@@ -49,6 +52,15 @@ private val bangumiClientJson = Json {
 }
 
 val appModule = module {
+    single {
+        val context = get<Context>()
+        Room.databaseBuilder(
+            context,
+            CacheDatabase::class.java,
+            (context.externalCacheDir ?: context.cacheDir).resolve("app_cache.db").absolutePath
+        ).build()
+    }
+    single { get<CacheDatabase>().userDao }
     single(named(HttpClientQualifier.ANGUMI)) {
         HttpClient {
             expectSuccess = true
@@ -98,7 +110,7 @@ val appModule = module {
     single { BangumiClient(get(), get()) }
     single { OAuthService(get(), get(), get()) }
     single { SettingsRepo(get()) }
-    single { UserLocalSource() }
+    single { UserLocalSource(get()) }
     single { UserRemoteSource(get()) }
     single { UserRepo(get(), get()) }
     single { CollectionLocalSource() }
