@@ -1,6 +1,7 @@
 package com.perqin.angumi.data.room
 
 import androidx.room.TypeConverter
+import com.perqin.angumi.data.models.SlimSubjectImages
 import com.perqin.angumi.data.user.UserAvatar
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
@@ -16,6 +17,26 @@ class ProtobufTypeConverters {
 
     @TypeConverter
     fun bytesToUserAvatar(byteArray: ByteArray): UserAvatar {
+        return ProtoBuf.decodeFromByteArray(byteArray)
+    }
+
+    @TypeConverter
+    fun stringListToBytes(stringList: List<String>): ByteArray {
+        return ProtoBuf.encodeToByteArray(stringList)
+    }
+
+    @TypeConverter
+    fun bytesToStringList(byteArray: ByteArray): List<String> {
+        return ProtoBuf.decodeFromByteArray(byteArray)
+    }
+
+    @TypeConverter
+    fun slimSubjectImagesToBytes(slimSubjectImages: SlimSubjectImages): ByteArray {
+        return ProtoBuf.encodeToByteArray(slimSubjectImages)
+    }
+
+    @TypeConverter
+    fun bytesToSlimSubjectImages(byteArray: ByteArray): SlimSubjectImages {
         return ProtoBuf.decodeFromByteArray(byteArray)
     }
 }

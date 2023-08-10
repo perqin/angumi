@@ -23,6 +23,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+
         buildConfigField("String", "BANGUMI_CLIENT_ID", "\"${env.BANGUMI_CLIENT_ID.value}\"")
     }
 
@@ -91,6 +95,7 @@ dependencies {
     implementation(libs.room)
     implementation(libs.room.ktx)
     implementation(libs.room.paging)
+    implementation(libs.paging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -1,0 +1,176 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c9d830aa94105bc01b5a4cd34a31b5b1",
+    "entities": [
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `username` TEXT NOT NULL, `nickname` TEXT NOT NULL, `userGroup` INTEGER NOT NULL, `sign` TEXT NOT NULL, `avatar` BLOB NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nickname",
+            "columnName": "nickname",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userGroup",
+            "columnName": "userGroup",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sign",
+            "columnName": "sign",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "avatar",
+            "columnName": "avatar",
+            "affinity": "BLOB",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SlimSubject",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `nameCn` TEXT NOT NULL, `images` BLOB NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameCn",
+            "columnName": "nameCn",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "images",
+            "columnName": "images",
+            "affinity": "BLOB",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Collection",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`subjectId` INTEGER NOT NULL, `subjectType` INTEGER NOT NULL, `rate` INTEGER NOT NULL, `type` INTEGER NOT NULL, `comment` TEXT, `tags` BLOB NOT NULL, `epStatus` INTEGER NOT NULL, `volStatus` INTEGER NOT NULL, `updatedAt` TEXT NOT NULL, `private` INTEGER NOT NULL, PRIMARY KEY(`subjectId`))",
+        "fields": [
+          {
+            "fieldPath": "subjectId",
+            "columnName": "subjectId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subjectType",
+            "columnName": "subjectType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rate",
+            "columnName": "rate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comment",
+            "columnName": "comment",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tags",
+            "columnName": "tags",
+            "affinity": "BLOB",
+            "notNull": true
+          },
+          {
+            "fieldPath": "epStatus",
+            "columnName": "epStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "volStatus",
+            "columnName": "volStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "private",
+            "columnName": "private",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "subjectId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c9d830aa94105bc01b5a4cd34a31b5b1')"
+    ]
+  }
+}

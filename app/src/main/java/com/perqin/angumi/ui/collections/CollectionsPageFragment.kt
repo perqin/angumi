@@ -16,6 +16,7 @@ import com.perqin.angumi.data.models.SubjectType
 import com.perqin.angumi.databinding.CollectionsPageFragmentBinding
 import com.perqin.angumi.utils.ShouldNotReachException
 import com.perqin.angumi.utils.collectViewState
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -84,7 +85,7 @@ class CollectionsPageFragment : Fragment() {
                 // Clear request if handled
                 parentFragmentViewModel.clearTabUpdateRequest()
                 try {
-                    viewModel.reloadCollectionList()
+                    viewModel.reloadCollectionListSilently()
                 } catch (e: Exception) {
                     Toast.makeText(
                         requireContext(),
@@ -97,8 +98,10 @@ class CollectionsPageFragment : Fragment() {
         collectViewState(viewModel.collectionType) {
             binding.collectionTypeChip.setText(it.titleRes)
         }
-        collectViewState(viewModel.collectionList) {
-            adapter.dataset = it.data
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.collectionPagingFlow.collectLatest {
+                adapter.submitData(it)
+            }
         }
     }
 

@@ -8,8 +8,6 @@ import com.perqin.angumi.data.api.bangumi.BangumiClient
 import com.perqin.angumi.data.api.bangumi.CollectionApi
 import com.perqin.angumi.data.api.bangumi.UserApi
 import com.perqin.angumi.data.auth.OAuthService
-import com.perqin.angumi.data.collection.CollectionLocalSource
-import com.perqin.angumi.data.collection.CollectionRemoteSource
 import com.perqin.angumi.data.collection.CollectionRepo
 import com.perqin.angumi.data.room.CacheDatabase
 import com.perqin.angumi.data.settings.SettingsRepo
@@ -58,9 +56,10 @@ val appModule = module {
             context,
             CacheDatabase::class.java,
             (context.externalCacheDir ?: context.cacheDir).resolve("app_cache.db").absolutePath
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
     single { get<CacheDatabase>().userDao }
+    single { get<CacheDatabase>().collectionDao }
     single(named(HttpClientQualifier.ANGUMI)) {
         HttpClient {
             expectSuccess = true
@@ -113,9 +112,7 @@ val appModule = module {
     single { UserLocalSource(get()) }
     single { UserRemoteSource(get()) }
     single { UserRepo(get(), get()) }
-    single { CollectionLocalSource() }
-    single { CollectionRemoteSource(get()) }
-    single { CollectionRepo(get(), get()) }
+    single { CollectionRepo(get(), get(), get()) }
 
     viewModel { SignInViewModel(get(), get()) }
     viewModel { MeViewModel(get(), get()) }

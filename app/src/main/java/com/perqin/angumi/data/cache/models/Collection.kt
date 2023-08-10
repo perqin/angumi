@@ -1,13 +1,13 @@
-package com.perqin.angumi.data.collection
+package com.perqin.angumi.data.cache.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.SlimSubject
 import com.perqin.angumi.data.models.SubjectType
-import kotlinx.serialization.Serializable
 
-// This is only defined for network API
-@Serializable
+@Entity
 data class Collection(
+    @PrimaryKey
     val subjectId: Int,
     val subjectType: SubjectType,
     val rate: Int,
@@ -20,5 +20,4 @@ data class Collection(
     val volStatus: Int,
     val updatedAt: String,
     val private: Boolean,
-    val subject: SlimSubject,
 )
