@@ -20,7 +20,7 @@ interface CollectionDao {
     suspend fun upsertAllSlimSubject(collections: List<SlimSubject>)
 
     @Transaction
-    @Query("SELECT * FROM Collection WHERE subjectType = :subjectType AND type = :collectionType")
+    @Query("SELECT * FROM Collection WHERE subjectType = :subjectType AND type = :collectionType ORDER BY updatedAt DESC")
     fun queryPagedCollectionsByTypes(
         subjectType: SubjectType,
         collectionType: CollectionType

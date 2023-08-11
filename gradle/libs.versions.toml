@@ -12,6 +12,7 @@ constraintlayout = "2.1.4"
 lifecycle-livedata-ktx = "2.6.1"
 lifecycle-viewmodel-ktx = "2.6.1"
 navigation = "2.6.0"
+kotlinx-datetime = "0.4.0"
 kotlinx-serialization = "1.5.1"
 ktor = "2.3.1"
 datastore = "1.0.0"
@@ -42,6 +43,7 @@ protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf", version.ref = "kotlinx-serialization" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }

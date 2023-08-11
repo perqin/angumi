@@ -2,6 +2,7 @@ package com.perqin.angumi.data.cache.models
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import kotlinx.datetime.Instant
 
 data class CollectionWithSlimSubject(
     @Embedded
@@ -22,7 +23,7 @@ data class CollectionWithSlimSubject(
                         tags,
                         epStatus,
                         volStatus,
-                        updatedAt,
+                        Instant.parse(updatedAt),
                         private,
                     ),
                     SlimSubject(

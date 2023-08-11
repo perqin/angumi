@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.perqin.angumi.data.models.CollectionType
 import com.perqin.angumi.data.models.SubjectType
+import kotlinx.datetime.Instant
 
 @Entity
 data class Collection(
@@ -18,6 +19,6 @@ data class Collection(
     val epStatus: Int,
     // TODO: What's this?
     val volStatus: Int,
-    val updatedAt: String,
+    val updatedAt: Instant,
     val private: Boolean,
 )
