@@ -12,12 +12,12 @@ plugins {
 
 android {
     namespace = "com.perqin.angumi"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.perqin.angumi"
         minSdk = 25
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
