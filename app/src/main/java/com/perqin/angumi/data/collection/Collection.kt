@@ -1,7 +1,7 @@
 package com.perqin.angumi.data.collection
 
+import com.perqin.angumi.data.cache.models.SlimSubject
 import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.SlimSubject
 import com.perqin.angumi.data.models.SubjectType
 import kotlinx.serialization.Serializable
 
@@ -14,9 +14,7 @@ data class Collection(
     val type: CollectionType,
     val comment: String?,
     val tags: List<String>,
-    // TODO: What's this?
     val epStatus: Int,
-    // TODO: What's this?
     val volStatus: Int,
     val updatedAt: String,
     val private: Boolean,

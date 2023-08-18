@@ -15,9 +15,9 @@ data class Collection(
     val type: CollectionType,
     val comment: String?,
     val tags: List<String>,
-    // TODO: What's this?
+    // Progress of the episode
     val epStatus: Int,
-    // TODO: What's this?
+    // Progress of the volume (for books)
     val volStatus: Int,
     val updatedAt: Instant,
     val private: Boolean,

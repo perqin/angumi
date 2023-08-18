@@ -26,4 +26,7 @@
     <string name="title_sanjigen">三次元</string>
     <string name="title_search">搜索</string>
     <string name="desc_search">搜索</string>
+    <string name="title_progress_t">%d / %d</string>
+    <string name="title_collectionSubtitle_t">%.1f分·%s</string>
+    <string name="title_collectionSubtitleNoDate_t">%.1f分</string>
 </resources>

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "36679d5cdd77b9a1c8a8fbd2af0f13e1",
+    "identityHash": "bd7cded3b30b4d29f701c14b4df79e27",
     "entities": [
       {
         "tableName": "User",
@@ -56,11 +56,17 @@
       },
       {
         "tableName": "SlimSubject",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `nameCn` TEXT NOT NULL, `images` BLOB NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `type` INTEGER NOT NULL, `name` TEXT NOT NULL, `nameCn` TEXT NOT NULL, `shortSummary` TEXT NOT NULL, `date` TEXT, `images` BLOB NOT NULL, `volumes` INTEGER NOT NULL, `eps` INTEGER NOT NULL, `collectionTotal` INTEGER NOT NULL, `score` REAL NOT NULL, `tags` BLOB NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -77,8 +83,50 @@
             "notNull": true
           },
           {
+            "fieldPath": "shortSummary",
+            "columnName": "shortSummary",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "images",
             "columnName": "images",
+            "affinity": "BLOB",
+            "notNull": true
+          },
+          {
+            "fieldPath": "volumes",
+            "columnName": "volumes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eps",
+            "columnName": "eps",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "collectionTotal",
+            "columnName": "collectionTotal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "score",
+            "columnName": "score",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tags",
+            "columnName": "tags",
             "affinity": "BLOB",
             "notNull": true
           }
@@ -170,7 +218,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '36679d5cdd77b9a1c8a8fbd2af0f13e1')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd7cded3b30b4d29f701c14b4df79e27')"
     ]
   }
 }

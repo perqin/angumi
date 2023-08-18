@@ -26,12 +26,7 @@ data class CollectionWithSlimSubject(
                         Instant.parse(updatedAt),
                         private,
                     ),
-                    SlimSubject(
-                        subject.id,
-                        subject.name,
-                        subject.nameCn,
-                        subject.images
-                    )
+                    subject,
                 )
             }
         }

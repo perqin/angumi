@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="128dp">
+    android:layout_height="120dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/cover_image"
-        android:layout_width="96dp"
+        android:layout_width="72dp"
         android:layout_height="96dp"
         android:layout_marginStart="16dp"
         android:background="@color/white"
@@ -19,14 +19,48 @@
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:id="@+id/name_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintTop_toTopOf="@+id/cover_image"
         app:layout_constraintStart_toEndOf="@id/cover_image"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="吹响吧，上低音号！" />
+
+    <TextView
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:id="@+id/subtitle_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/name_text"
+        app:layout_constraintStart_toEndOf="@id/cover_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="9.9分·周三" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:id="@+id/progress_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/progress_indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="5/12" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_indicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/cover_image"
+        app:layout_constraintStart_toEndOf="@id/cover_image"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
