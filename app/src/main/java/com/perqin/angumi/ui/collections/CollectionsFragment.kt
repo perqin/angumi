@@ -14,10 +14,15 @@ import com.perqin.angumi.R
 import com.perqin.angumi.data.settings.isSignedIn
 import com.perqin.angumi.databinding.CollectionsFragmentBinding
 import com.perqin.angumi.utils.collectViewState
+import com.perqin.angumi.utils.logD
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CollectionsFragment : Fragment() {
+    companion object {
+        private const val TAG = "CollectionsFragment"
+    }
+
     private var _binding: CollectionsFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -26,6 +31,7 @@ class CollectionsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        logD(TAG, "onCreate: this instance is $this")
         collectionsPagerAdapter = CollectionsPagerAdapter(this)
     }
 
@@ -46,6 +52,7 @@ class CollectionsFragment : Fragment() {
             requireActivity().findNavController(R.id.nav_host_fragment_container_view)
                 .navigate(AppNavigationDirections.globalAuthAction())
         }
+        logD(TAG, "onViewCreated: assigned adapter instance is $collectionsPagerAdapter")
         binding.collectionsViewPager.adapter = collectionsPagerAdapter
         binding.collectionsViewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
