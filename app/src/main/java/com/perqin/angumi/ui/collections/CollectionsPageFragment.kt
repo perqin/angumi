@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.perqin.angumi.R
 import com.perqin.angumi.data.models.CollectionType
 import com.perqin.angumi.data.models.SubjectType
@@ -79,6 +80,13 @@ class CollectionsPageFragment : Fragment() {
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            MaterialDividerItemDecoration(
+                requireContext(),
+                LinearLayoutManager.VERTICAL
+            ).apply {
+                isLastItemDecorated = false
+            })
 
         collectViewState(parentFragmentViewModel.tabUpdateRequest) {
             if (it?.subjectType == subjectType) {
