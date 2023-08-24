@@ -1,4 +1,4 @@
-package com.perqin.angumi.data.models
+package com.perqin.angumi.data.domains.common.models
 
 import androidx.annotation.StringRes
 import com.perqin.angumi.R

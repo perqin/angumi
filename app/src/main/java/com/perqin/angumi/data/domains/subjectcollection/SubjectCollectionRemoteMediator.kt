@@ -1,4 +1,4 @@
-package com.perqin.angumi.data.cache.paging
+package com.perqin.angumi.data.domains.subjectcollection
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
@@ -6,10 +6,9 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.perqin.angumi.data.api.bangumi.BangumiClient
-import com.perqin.angumi.data.cache.models.CollectionWithSlimSubject
-import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.PagedQuery
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.CollectionType
+import com.perqin.angumi.data.domains.common.models.PagedQuery
+import com.perqin.angumi.data.domains.common.models.SubjectType
 import com.perqin.angumi.data.room.CacheDatabase
 import com.perqin.angumi.utils.logE
 import com.perqin.angumi.utils.logI
@@ -18,7 +17,7 @@ import com.perqin.angumi.utils.logI
  * Key: Item offset
  */
 @OptIn(ExperimentalPagingApi::class)
-class CollectionRemoteMediator(
+class SubjectCollectionRemoteMediator(
     private val username: String,
     private val subjectType: SubjectType,
     private val collectionType: CollectionType,
@@ -29,7 +28,7 @@ class CollectionRemoteMediator(
         private const val TAG = "CollectionRemoteMediato"
     }
 
-    private val collectionDao = database.collectionDao
+    private val collectionDao = database.subjectCollectionDao
 
     override suspend fun load(
         loadType: LoadType,

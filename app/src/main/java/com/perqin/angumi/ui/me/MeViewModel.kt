@@ -1,8 +1,8 @@
 package com.perqin.angumi.ui.me
 
 import androidx.lifecycle.ViewModel
+import com.perqin.angumi.data.domains.user.UserRepo
 import com.perqin.angumi.data.settings.SettingsRepo
-import com.perqin.angumi.data.user.UserRepo
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

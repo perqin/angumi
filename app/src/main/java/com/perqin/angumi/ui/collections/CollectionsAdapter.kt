@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.perqin.angumi.R
-import com.perqin.angumi.data.cache.models.CollectionWithSlimSubject
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.SubjectType
+import com.perqin.angumi.data.domains.subjectcollection.CollectionWithSlimSubject
 import com.perqin.angumi.databinding.CollectionItemBinding
 import java.time.format.TextStyle
 

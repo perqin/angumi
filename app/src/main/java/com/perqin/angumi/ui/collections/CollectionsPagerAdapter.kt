@@ -2,7 +2,7 @@ package com.perqin.angumi.ui.collections
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.SubjectType
 
 class CollectionsPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     val pages = listOf(

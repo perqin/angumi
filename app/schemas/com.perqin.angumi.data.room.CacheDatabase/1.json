@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bd7cded3b30b4d29f701c14b4df79e27",
+    "identityHash": "1d6dc49d9029147b149f2b9f716fda1a",
     "entities": [
       {
         "tableName": "User",
@@ -141,7 +141,7 @@
         "foreignKeys": []
       },
       {
-        "tableName": "Collection",
+        "tableName": "SubjectCollection",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`subjectId` INTEGER NOT NULL, `subjectType` INTEGER NOT NULL, `rate` INTEGER NOT NULL, `type` INTEGER NOT NULL, `comment` TEXT, `tags` BLOB NOT NULL, `epStatus` INTEGER NOT NULL, `volStatus` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `private` INTEGER NOT NULL, PRIMARY KEY(`subjectId`))",
         "fields": [
           {
@@ -218,7 +218,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd7cded3b30b4d29f701c14b4df79e27')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1d6dc49d9029147b149f2b9f716fda1a')"
     ]
   }
 }

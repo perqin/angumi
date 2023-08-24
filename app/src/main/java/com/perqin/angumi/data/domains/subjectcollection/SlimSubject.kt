@@ -1,10 +1,10 @@
-package com.perqin.angumi.data.cache.models
+package com.perqin.angumi.data.domains.subjectcollection
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.perqin.angumi.data.models.SlimSubjectImages
-import com.perqin.angumi.data.models.SlimSubjectTag
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.SlimSubjectImages
+import com.perqin.angumi.data.domains.common.models.SlimSubjectTag
+import com.perqin.angumi.data.domains.common.models.SubjectType
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 

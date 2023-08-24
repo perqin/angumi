@@ -1,4 +1,4 @@
-package com.perqin.angumi.data.user
+package com.perqin.angumi.data.domains.user
 
 import kotlinx.serialization.Serializable
 

@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.perqin.angumi.R
-import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.CollectionType
+import com.perqin.angumi.data.domains.common.models.SubjectType
 import com.perqin.angumi.databinding.CollectionsPageFragmentBinding
 import com.perqin.angumi.utils.ShouldNotReachException
 import com.perqin.angumi.utils.collectViewState

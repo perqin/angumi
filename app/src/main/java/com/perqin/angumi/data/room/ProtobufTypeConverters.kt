@@ -1,9 +1,9 @@
 package com.perqin.angumi.data.room
 
 import androidx.room.TypeConverter
-import com.perqin.angumi.data.models.SlimSubjectImages
-import com.perqin.angumi.data.models.SlimSubjectTag
-import com.perqin.angumi.data.user.UserAvatar
+import com.perqin.angumi.data.domains.common.models.SlimSubjectImages
+import com.perqin.angumi.data.domains.common.models.SlimSubjectTag
+import com.perqin.angumi.data.domains.user.UserAvatar
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray

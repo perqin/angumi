@@ -8,13 +8,13 @@ import com.perqin.angumi.data.api.bangumi.BangumiClient
 import com.perqin.angumi.data.api.bangumi.CollectionApi
 import com.perqin.angumi.data.api.bangumi.UserApi
 import com.perqin.angumi.data.auth.OAuthService
-import com.perqin.angumi.data.collection.CollectionRepo
+import com.perqin.angumi.data.domains.subjectcollection.SubjectCollectionRepo
+import com.perqin.angumi.data.domains.user.UserLocalSource
+import com.perqin.angumi.data.domains.user.UserRemoteSource
+import com.perqin.angumi.data.domains.user.UserRepo
 import com.perqin.angumi.data.room.CacheDatabase
 import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.data.settings.isSignedIn
-import com.perqin.angumi.data.user.UserLocalSource
-import com.perqin.angumi.data.user.UserRemoteSource
-import com.perqin.angumi.data.user.UserRepo
 import com.perqin.angumi.ui.auth.SignInViewModel
 import com.perqin.angumi.ui.collections.CollectionsPageViewModel
 import com.perqin.angumi.ui.collections.CollectionsViewModel
@@ -59,7 +59,7 @@ val appModule = module {
         ).fallbackToDestructiveMigration().build()
     }
     single { get<CacheDatabase>().userDao }
-    single { get<CacheDatabase>().collectionDao }
+    single { get<CacheDatabase>().subjectCollectionDao }
     single(named(HttpClientQualifier.ANGUMI)) {
         HttpClient {
             expectSuccess = true
@@ -112,7 +112,7 @@ val appModule = module {
     single { UserLocalSource(get()) }
     single { UserRemoteSource(get()) }
     single { UserRepo(get(), get()) }
-    single { CollectionRepo(get(), get(), get()) }
+    single { SubjectCollectionRepo(get(), get(), get()) }
 
     viewModel { SignInViewModel(get(), get()) }
     viewModel { MeViewModel(get(), get()) }

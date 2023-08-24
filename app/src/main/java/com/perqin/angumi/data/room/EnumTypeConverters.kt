@@ -1,8 +1,8 @@
 package com.perqin.angumi.data.room
 
 import androidx.room.TypeConverter
-import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.CollectionType
+import com.perqin.angumi.data.domains.common.models.SubjectType
 
 /**
  * Room could convert enum values by default, but we still define these converters to ensure human-

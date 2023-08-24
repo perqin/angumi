@@ -1,4 +1,4 @@
-package com.perqin.angumi.data.user
+package com.perqin.angumi.data.domains.user
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,9 +1,9 @@
 package com.perqin.angumi
 
 import android.app.Application
+import com.perqin.angumi.data.domains.user.UserRepo
 import com.perqin.angumi.data.settings.SettingsRepo
 import com.perqin.angumi.data.settings.isSignedIn
-import com.perqin.angumi.data.user.UserRepo
 import com.perqin.angumi.di.appModule
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope

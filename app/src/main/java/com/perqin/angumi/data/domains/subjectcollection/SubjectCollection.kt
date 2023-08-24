@@ -1,13 +1,13 @@
-package com.perqin.angumi.data.cache.models
+package com.perqin.angumi.data.domains.subjectcollection
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.CollectionType
+import com.perqin.angumi.data.domains.common.models.SubjectType
 import kotlinx.datetime.Instant
 
 @Entity
-data class Collection(
+data class SubjectCollection(
     @PrimaryKey
     val subjectId: Int,
     val subjectType: SubjectType,

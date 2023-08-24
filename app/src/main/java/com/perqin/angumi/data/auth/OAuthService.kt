@@ -3,8 +3,8 @@ package com.perqin.angumi.data.auth
 import android.net.Uri
 import android.util.Log
 import com.perqin.angumi.data.api.angumi.AngumiClient
+import com.perqin.angumi.data.domains.user.UserRepo
 import com.perqin.angumi.data.settings.SettingsRepo
-import com.perqin.angumi.data.user.UserRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

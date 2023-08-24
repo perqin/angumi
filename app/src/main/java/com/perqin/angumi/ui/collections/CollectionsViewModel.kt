@@ -1,7 +1,7 @@
 package com.perqin.angumi.ui.collections
 
 import androidx.lifecycle.ViewModel
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.SubjectType
 import com.perqin.angumi.data.settings.SettingsRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

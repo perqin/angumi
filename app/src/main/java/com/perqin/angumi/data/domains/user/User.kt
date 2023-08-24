@@ -1,4 +1,4 @@
-package com.perqin.angumi.data.user
+package com.perqin.angumi.data.domains.user
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

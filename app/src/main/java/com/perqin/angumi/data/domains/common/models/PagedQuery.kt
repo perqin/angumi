@@ -1,4 +1,4 @@
-package com.perqin.angumi.data.models
+package com.perqin.angumi.data.domains.common.models
 
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.parameter

@@ -1,4 +1,4 @@
-package com.perqin.angumi.data.user
+package com.perqin.angumi.data.domains.user
 
 import com.perqin.angumi.data.api.bangumi.BangumiClient
 

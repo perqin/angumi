@@ -1,6 +1,6 @@
 package com.perqin.angumi.data.api.bangumi
 
-import com.perqin.angumi.data.user.User
+import com.perqin.angumi.data.domains.user.User
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get

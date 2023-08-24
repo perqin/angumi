@@ -1,8 +1,8 @@
-package com.perqin.angumi.data.collection
+package com.perqin.angumi.data.api.bangumi.models
 
-import com.perqin.angumi.data.cache.models.SlimSubject
-import com.perqin.angumi.data.models.CollectionType
-import com.perqin.angumi.data.models.SubjectType
+import com.perqin.angumi.data.domains.common.models.CollectionType
+import com.perqin.angumi.data.domains.common.models.SubjectType
+import com.perqin.angumi.data.domains.subjectcollection.SlimSubject
 import kotlinx.serialization.Serializable
 
 // This is only defined for network API
