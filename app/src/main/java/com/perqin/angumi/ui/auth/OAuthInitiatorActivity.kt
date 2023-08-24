@@ -36,7 +36,7 @@ class OAuthInitiatorActivity : AppCompatActivity() {
                         .appendQueryParameter("response_type", "code")
                         .appendQueryParameter(
                             "redirect_uri",
-                            "https://angumi.perqin.com/oauth-callback"
+                            "https://angumi.perqin.cn/oauth-callback"
                         )
                         .build()
                     CustomTabsIntent.Builder().build().launchUrl(this@OAuthInitiatorActivity, uri)
